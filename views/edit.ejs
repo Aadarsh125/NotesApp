@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: 'Inter', sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border-radius: 10px;
+        }
+        .form-control {
+            transition: all 0.3s ease-in-out;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 10px #719ECE;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="glass p-10 w-full max-w-lg">
+        <h1 class="text-4xl font-bold mb-8 text-center text-pink-700">Edit Note</h1>
+        <form action="/update/<%= note._id %>" method="post" autocomplete="off">
+            <div class="mb-5">
+                <label for="title" class="block text-gray-800 font-semibold mb-2">Title</label>
+                <input type="text" id="title" name="title" value="<%= note.title %>" placeholder="Enter note title" class="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500" required>
+            </div>
+            <div class="mb-6">
+                <label for="content" class="block text-gray-800 font-semibold mb-2">Content</label>
+                <textarea id="content" name="content" placeholder="Enter note content" rows="4" class="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500" required><%= note.content %></textarea>
+            </div>
+            <div class="flex items-center justify-center">
+                <button type="submit" class="bg-pink-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-pink-700 transform hover:scale-105 transition-transform duration-300">Update</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
